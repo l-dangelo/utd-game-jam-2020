@@ -37,7 +37,7 @@ public class LevelController : MonoBehaviour
 
     public void PauseGame()
     {
-      //  _mainSong.Pause();
+        _mainSong.Pause();
         _isPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -47,7 +47,7 @@ public class LevelController : MonoBehaviour
 
     public void UnpauseGame()
     {
-     //   _mainSong.Play();
+        _mainSong.Play();
         _isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -68,7 +68,6 @@ public class LevelController : MonoBehaviour
 
     public void QuitGame()
     {
-        // Save();
         Application.Quit();
     }
 }
