@@ -23,7 +23,7 @@ public class OnBeat : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(updateCounter == 1 || updateCounter == 26)
+            if(updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
             {
                 OnBeatSuccess();
             }
@@ -32,7 +32,7 @@ public class OnBeat : MonoBehaviour
                 OnBeatFail();
             }
         }
-        else if ((updateCounter == 1 || updateCounter == 26) && !(Input.GetKeyDown(KeyCode.Space)))
+        else if ((updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28)) && !(Input.GetKeyDown(KeyCode.Space)))
         {
             OnBeatFail();
         }
