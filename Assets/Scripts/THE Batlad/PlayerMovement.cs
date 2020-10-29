@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Groundcheck Options")]
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundMask;
-    public int _groundDistance;
+    //public int _groundDistance;
     public float boxDiameter = 0.5f;
 
     bool isGrounded;
