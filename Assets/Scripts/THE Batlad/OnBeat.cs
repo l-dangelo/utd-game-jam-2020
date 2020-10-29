@@ -10,16 +10,37 @@ public class OnBeat : MonoBehaviour
     // the amount of beats the player has been "On Beat"
     public int _beatCounter = 0;
 
-    // Called twice a second in the Unity settings
+    int updateCounter = 1;
+
+    // Called 50 times a second
     private void FixedUpdate()
     {
+        /* 
+         * Space should be hit on updates 1 and 26.
+         * There are 50 updates a second and we need 2.
+         * updateCounter should be reset to 1 after update 50.
+         */
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            OnBeatSuccess();
+            if(updateCounter == 1 || updateCounter == 26)
+            {
+                OnBeatSuccess();
+            }
+            else
+            {
+                OnBeatFail();
+            }
         }
-        else
+        else if ((updateCounter == 1 || updateCounter == 26) && !(Input.GetKeyDown(KeyCode.Space)))
         {
             OnBeatFail();
+        }
+
+        updateCounter++;
+        if(updateCounter == 51)
+        {
+            updateCounter = 1;
         }
     }
 

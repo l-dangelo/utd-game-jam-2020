@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     int jumpCounter = 1;
 
     [Header("Groundcheck Options")]
-    [SerializeField] Transform groundCheck;
+    [SerializeField] Transform groundCheck = null;
     [SerializeField] LayerMask groundMask;
     //public int _groundDistance;
     public float boxDiameter = 0.5f;
