@@ -9,28 +9,23 @@ public class Timer : LevelController
     public LevelController levelController = null;
     public float _timeLeft = 90.0f;
 
-<<<<<<< HEAD
-    public bool _paused = false;
-=======
+    bool _paused = false;
+
     private void Awake()
     {
         levelController = GetComponent<LevelController>();
     }
->>>>>>> main
 
     private void Update()
     {
         CountDown();
     }
 
-<<<<<<< HEAD
-=======
     void CheckIfPaused()
     {
-        _isPaused = levelController.CheckPausedState();
+        _paused = levelController.CheckPausedState();
     }
 
->>>>>>> main
     void CountDown()
     {
         if (!_paused)
