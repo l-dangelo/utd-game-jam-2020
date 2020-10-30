@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : OnBeat
 {
     [Header("Character Settings")]
     [SerializeField] Rigidbody2D rb = null;
@@ -32,12 +32,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("jumpNumber", 0);
     }
 
-
-    void Update()
+    private void FixedUpdate()
     {
         Move();
         Jump();
         GroundCheck();
+        JumpOnBeat();
     }
 
     void GroundCheck()
@@ -118,5 +118,22 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    
+    void JumpOnBeat()
+    {
+        if (CheckOnBeat())
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                OnBeatSuccess();
+            }
+            else
+            {
+                OnBeatFail();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnBeatFail();
+        }
+    }
 }

@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class OnBeat : MonoBehaviour
 {
-    // Set to true if the player is on beat. False if they are not
     public bool _isOnBeat = false;
 
-    // the amount of beats the player has been "On Beat"
     public int _beatCounter = 0;
 
-    int updateCounter = 1;
+    int updateCounter = 0;
 
-    // Called 50 times a second
     private void FixedUpdate()
     {
-        /* 
-         * Space should be hit on updates 1 and 26.
-         * There are 50 updates a second and we need 2.
-         * updateCounter should be reset to 1 after update 50.
-         */
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+        CheckOnBeat();
+    }
+
+    public bool CheckOnBeat()
+    {
+        updateCounter++;
+
+        if (updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
         {
-            if(updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
+            return true;
+        }
+
+        return false;
+    }
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
             {
                 OnBeatSuccess();
             }
@@ -38,22 +43,18 @@ public class OnBeat : MonoBehaviour
         }
 
         updateCounter++;
-        if(updateCounter == 51)
+        if (updateCounter == 51)
         {
             updateCounter = 1;
-        }
-    }
+        }*/
 
-    // Called if the player hit space in time. Increments the beat counter
-    void OnBeatSuccess()
+    public void OnBeatSuccess()
     {
         _isOnBeat = true;
         _beatCounter++;
     }
 
-
-    // Called if the player doesn't hit the space. Sets the beat count to zero and the bool to false
-    void OnBeatFail()
+    public void OnBeatFail()
     {
         _isOnBeat = false;
         _beatCounter = 0;
