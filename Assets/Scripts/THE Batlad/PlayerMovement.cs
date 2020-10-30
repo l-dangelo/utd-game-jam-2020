@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             jumpCounter++;
             //animator.SetInteger("jumpNumber", jumpCounter);
             animator.SetBool("isJumping", true);
-            if (jumpCounter <= _maxJumps -1) //allow up to MAXJUMPS # of jumps
+            if (jumpCounter <= _maxJumps -1 && !animator.GetBool("isAttacking")) //allow up to MAXJUMPS # of jumps
             {
                 rb.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse); //add jump force
                 

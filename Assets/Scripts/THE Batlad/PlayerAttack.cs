@@ -9,14 +9,17 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Animation Options")]
     [SerializeField] Animator animator = null;
-    public float animationLength = 3;
+    public float animationLength = 0.6f;
 
     [Header("Attack Options")]
     [SerializeField] LayerMask hitLayers;
     [SerializeField] GameObject hitBox = null;
     [SerializeField] MeleeHit hitScript = null;
+    public Animation anim;
     public float meleeHitDistance = 5;
     public float _bounceOffForce = 3;
+    float fireRate = 2;
+    public float nextAttack = 1;
 
 
     RaycastHit2D hitRayMelee;
@@ -27,9 +30,12 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        //anim = gameObject.GetComponentInChildren<Animation>();
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
         Attack();
@@ -44,11 +50,15 @@ public class PlayerAttack : MonoBehaviour
 
             //melee attack
             //create a small raycast, and if it hits, deal damage
+            if (Time.time > nextAttack)
+            {
+                
+                StartCoroutine(MeleeAttack());
 
-            StartCoroutine(MeleeAttack());
-
-            if (hitScript.HitSomething == false)
-                animator.SetBool("hitEnemy", false);
+                if (hitScript.HitSomething == false)
+                    animator.SetBool("hitEnemy", false);
+                nextAttack = Time.time + fireRate;
+            }
         }
 
     } //end of Attack funct
@@ -61,13 +71,15 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator MeleeAttack()
     {
+        //anim.Play("Player_Attack");
         animator.SetBool("isAttacking", true);
+        animator.SetTrigger("Attack");
         hitBox.SetActive(true);
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
         playerMovement._moveSpeed /= 3;
 
-        yield return new WaitForSeconds(animationLength);
+        yield return new WaitForSeconds(animationLength); //anim["Player_Attack"].length
 
         animator.SetBool("isAttacking", false);
         animator.SetBool("hitEnemy", false);
