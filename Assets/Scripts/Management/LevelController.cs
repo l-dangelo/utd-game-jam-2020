@@ -71,4 +71,9 @@ public class LevelController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public bool CheckPausedState()
+    {
+        return _isPaused;
+    }
 }

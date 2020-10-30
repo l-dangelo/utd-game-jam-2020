@@ -9,12 +9,10 @@ public class BeatTracker : OnBeat
     [SerializeField] GameObject _onBeatImage = null;
     [SerializeField] GameObject _offBeatImage = null;
 
-    int updateCounter = 1;
 
     private void FixedUpdate()
     {
-
-        if(updateCounter == 1 || updateCounter == 26)
+        if (CheckOnBeat())
         {
             _offBeatImage.SetActive(false);
             _onBeatImage.SetActive(true);
@@ -23,12 +21,6 @@ public class BeatTracker : OnBeat
         {
             _onBeatImage.SetActive(false);
             _offBeatImage.SetActive(true);
-        }
-
-        updateCounter++;
-        if (updateCounter == 50)
-        {
-            updateCounter = 1;
         }
     }
 }

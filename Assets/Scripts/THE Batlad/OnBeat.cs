@@ -5,10 +5,8 @@ using UnityEngine;
 public class OnBeat : MonoBehaviour
 {
     public bool _isOnBeat = false;
-
     public int _beatCounter = 0;
-
-    int updateCounter = 0;
+    public int updateCounter = 0;
 
     private void FixedUpdate()
     {
@@ -18,7 +16,11 @@ public class OnBeat : MonoBehaviour
     public bool CheckOnBeat()
     {
         updateCounter++;
-
+        if(updateCounter == 51)
+        {
+            updateCounter = 1;
+        }
+        
         if (updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
         {
             return true;
@@ -26,27 +28,6 @@ public class OnBeat : MonoBehaviour
 
         return false;
     }
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28))
-            {
-                OnBeatSuccess();
-            }
-            else
-            {
-                OnBeatFail();
-            }
-        }
-        else if ((updateCounter > 49 || (updateCounter > 1 && updateCounter < 3) || (updateCounter > 24 && updateCounter < 28)) && !(Input.GetKeyDown(KeyCode.Space)))
-        {
-            OnBeatFail();
-        }
-
-        updateCounter++;
-        if (updateCounter == 51)
-        {
-            updateCounter = 1;
-        }*/
 
     public void OnBeatSuccess()
     {
