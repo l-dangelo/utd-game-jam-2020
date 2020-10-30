@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghost : OnBeat
+public class Punkin : MonoBehaviour
 {
     public float _moveSpeed = 1;
     public bool isFacingRight = true;
@@ -12,10 +12,10 @@ public class Ghost : OnBeat
     {
         //if (checkOnBeat())
         //{
-            Vector3 _moveDirection = transform.right * hitWallInt;
-            transform.position += _moveDirection * _moveSpeed * Time.fixedDeltaTime;
+        Vector3 _moveDirection = transform.right * hitWallInt;
+        transform.position += _moveDirection * _moveSpeed * Time.fixedDeltaTime;
         //}
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,8 +25,7 @@ public class Ghost : OnBeat
             hitWallInt = -hitWallInt;
             Flip();
         }
-        if (collision.tag.Equals("Player"))
-        {
+        if (collision.tag.Equals("Player")){
             Debug.Log("Hit Player");
             //Reduce time by [TIME]
         }
