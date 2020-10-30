@@ -6,6 +6,8 @@ public class MeleeHit : MonoBehaviour
 {
     [SerializeField] PlayerAttack playerAttack = null;
     [SerializeField] Animator animator = null;
+    [SerializeField] ParticleSystem damageBurst = null;
+    [SerializeField] ParticleSystem enemyBurst = null;
 
 
     public bool HitSomething; //if it hit anything
@@ -26,11 +28,16 @@ public class MeleeHit : MonoBehaviour
             if (collision.tag.Equals("Enemy"))
             {
                 Debug.Log("Hit Enemy");
+                enemyBurst = collision.GetComponentInChildren<ParticleSystem>();
 
                 Debug.Log("Hit Enemy For Sure");
                 animator.SetBool("hitEnemy", true);
 
                 DelayHelper.DelayAction(playerAttack, playerAttack.Bounce, playerAttack.animationLength);
+                damageBurst.Play();
+                
+                if (enemyBurst != null) enemyBurst.Play();
+
 
                 HitEnemy = true;
 

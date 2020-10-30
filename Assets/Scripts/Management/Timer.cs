@@ -6,7 +6,13 @@ using TMPro;
 public class Timer : LevelController
 {
     [SerializeField] TextMeshProUGUI _currentTime = null;
+    public LevelController levelController = null;
     public float _timeLeft = 90.0f;
+
+    private void Awake()
+    {
+        levelController = GetComponent<LevelController>();
+    }
 
     private void Update()
     {
@@ -16,7 +22,7 @@ public class Timer : LevelController
 
     void CheckIfPaused()
     {
-        _isPaused = CheckPausedState();
+        _isPaused = levelController.CheckPausedState();
     }
 
     void CountDown()

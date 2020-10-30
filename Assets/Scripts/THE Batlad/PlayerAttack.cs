@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Character Options")]
     [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] GameObject playerHitBox = null;
 
     [Header("Animation Options")]
     [SerializeField] Animator animator = null;
@@ -18,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     public Animation anim;
     public float meleeHitDistance = 5;
     public float _bounceOffForce = 3;
-    float fireRate = 1;
+    float fireRate = 1f;
     public float nextAttack = 0.5f;
 
 
@@ -30,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        playerHitBox = GameObject.Find("PlayerHitBox");
         //anim = gameObject.GetComponentInChildren<Animation>();
     }
 
@@ -75,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("isAttacking", true);
         animator.SetTrigger("Attack");
         hitBox.SetActive(true);
+        playerHitBox.SetActive(false); //cant get hurt while attacking. He hurts OTHERS MUAHAHAHA
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
         playerMovement._moveSpeed /= 3;
@@ -87,5 +90,9 @@ public class PlayerAttack : MonoBehaviour
         hitBox.SetActive(false);
         rb.gravityScale = 1;
         playerMovement._moveSpeed *= 3;
+
+        yield return new WaitForSeconds(1);
+        playerHitBox.SetActive(true);
+
     }
 }

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Character Settings")]
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] Animator animator = null;
+    [SerializeField] ParticleSystem dustSystem = null;
 
 
     [Header("Movement Options")]
@@ -17,12 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Groundcheck Options")]
     [SerializeField] Transform groundCheck = null;
+    [SerializeField] Transform CielingCheck = null;
     [SerializeField] LayerMask groundMask;
     //public int _groundDistance;
     public float boxDiameter = 0.5f;
     public float x;
 
     bool isGrounded;
+    bool touchedCieling;
     public bool isFacingRight = true;
 
     private void Awake()
@@ -47,11 +50,23 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isGrounded", true);
+            dustSystem.Play();
         }
         else if (!isGrounded)
         {
             animator.SetBool("isGrounded", false);
+            dustSystem.Stop();
 
+        }
+    }
+
+    void CeilingCheck()
+    {
+        touchedCieling = Physics2D.OverlapBox(CielingCheck.position, new Vector2(boxDiameter - 0.1f, boxDiameter - 0.1f), 90, groundMask);
+
+        if (touchedCieling)
+        {
+            rb.velocity.Set(x, 0);
         }
     }
 
