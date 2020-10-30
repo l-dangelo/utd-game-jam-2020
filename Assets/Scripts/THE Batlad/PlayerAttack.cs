@@ -18,8 +18,8 @@ public class PlayerAttack : MonoBehaviour
     public Animation anim;
     public float meleeHitDistance = 5;
     public float _bounceOffForce = 3;
-    float fireRate = 2;
-    public float nextAttack = 1;
+    float fireRate = 1;
+    public float nextAttack = 0.5f;
 
 
     RaycastHit2D hitRayMelee;
