@@ -50,13 +50,11 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isGrounded", true);
-            dustSystem.Play();
         }
         else if (!isGrounded)
         {
             animator.SetBool("isGrounded", false);
             dustSystem.Stop();
-
         }
     }
 
@@ -87,6 +85,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (x < 0 && isFacingRight) Flip();
         if (x > 0 && !isFacingRight) Flip();
+
+        if (isGrounded)
+        {
+            if(Mathf.Abs(x * _moveSpeed) > 0)
+            {
+                    dustSystem.Play();
+            }
+            else
+            {
+                dustSystem.Stop();
+            }
+        }
 
 
     }
