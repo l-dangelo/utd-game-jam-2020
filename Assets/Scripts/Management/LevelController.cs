@@ -35,11 +35,6 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public bool CheckPausedState()
-    {
-        return _isPaused;
-    }
-
     public void PauseGame()
     {
         _mainSong.Pause();

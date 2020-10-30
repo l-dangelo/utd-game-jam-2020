@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BeatTracker : MonoBehaviour
+public class BeatTracker : OnBeat
 {
     [Header("Pictures")]
     [SerializeField] GameObject _onBeatImage = null;
@@ -13,6 +13,7 @@ public class BeatTracker : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if(updateCounter == 1 || updateCounter == 26)
         {
             _offBeatImage.SetActive(false);
