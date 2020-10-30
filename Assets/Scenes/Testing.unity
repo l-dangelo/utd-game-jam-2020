@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 288542698}
   animator: {fileID: 1240618350}
-  animationLength: 1
+  animationLength: 0.6
   hitLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -517,7 +517,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -538,7 +538,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -11254,7 +11254,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004118845, y: 0.1043215}
+  m_Offset: {x: -0.007485047, y: 0.1043215}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -11265,7 +11265,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07375419, y: 0.20385782}
+  m_Size: {x: 0.2878454, y: 0.20385782}
   m_EdgeRadius: 0
 --- !u!212 &2089572761
 SpriteRenderer:
