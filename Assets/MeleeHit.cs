@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class MeleeHit : MonoBehaviour
 {
+    [SerializeField] PlayerAttack playerAttack = null;
+    [SerializeField] Animator animator = null;
+
+
     public bool HitSomething; //if it hit anything
     public bool HitEnemy; //if that thing is an enemy
     public bool HitWall; //if that thing is a wall
-    public Collider2D thingHit;
+
+
+    private void Awake()
+    {
+        playerAttack = GetComponentInParent<PlayerAttack>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.attachedRigidbody != null)
-        {
+            Debug.Log("collided");
             HitSomething = true;
+
             if (collision.tag.Equals("Enemy"))
             {
                 Debug.Log("Hit Enemy");
+
+                Debug.Log("Hit Enemy For Sure");
+                animator.SetBool("hitEnemy", true);
+
+                DelayHelper.DelayAction(playerAttack, playerAttack.Bounce, playerAttack.animationLength);
 
                 HitEnemy = true;
 
@@ -26,16 +39,14 @@ public class MeleeHit : MonoBehaviour
             if (collision.tag.Equals("Destructible Wall"))
             {
                 Debug.Log("Hit Wall");
+                //Destroy wall and replace with gravity-affected rigidbody prefab
+                //Destroy prefab after 3 seconds
 
                 HitWall = true;
 
             }
-        }
-       if (collision.attachedRigidbody == null)
-        {
-            Debug.Log("Missed!");
-            HitSomething = false;
-        }
-            
+
     }
+
+
 }

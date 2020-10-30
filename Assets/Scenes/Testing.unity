@@ -640,10 +640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60043bf8ef54f946a627403963e1904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttack: {fileID: 288542701}
+  animator: {fileID: 1240618350}
   HitSomething: 0
   HitEnemy: 0
   HitWall: 0
-  thingHit: {fileID: 0}
 --- !u!58 &1927540265
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Animation Options")]
     [SerializeField] Animator animator = null;
-    public float animationLength = 1;
+    public float animationLength = 3;
 
     [Header("Attack Options")]
     [SerializeField] LayerMask hitLayers;
@@ -47,40 +47,33 @@ public class PlayerAttack : MonoBehaviour
 
             StartCoroutine(MeleeAttack());
 
-            if (hitScript.HitSomething == true)
-            {
-                if (hitScript.HitEnemy)
-                {
-                    Debug.Log("Hit Enemy");
-                    animator.SetBool("hitEnemy", true);
-                    rb.AddForce(new Vector2(0f, _bounceOffForce), ForceMode2D.Impulse); //add jump force
-                }
-
-                if (hitScript.HitWall)
-                {
-                    Debug.Log("Hit Wall");
-                    //Destroy wall and replace with gravity-affected rigidbody prefab
-                    //Destroy prefab after 3 seconds
-                }
-            } else if (hitScript.HitSomething == false)
+            if (hitScript.HitSomething == false)
                 animator.SetBool("hitEnemy", false);
         }
 
     } //end of Attack funct
 
+    public void Bounce()
+    {
+        rb.AddForce(new Vector2(0f, _bounceOffForce), ForceMode2D.Impulse); //add jump force
+        hitScript.HitSomething = false;
+    }
+
     IEnumerator MeleeAttack()
     {
         animator.SetBool("isAttacking", true);
         hitBox.SetActive(true);
-        rb.simulated = false;
+        rb.gravityScale = 0;
+        rb.velocity = new Vector2(0, 0);
         playerMovement._moveSpeed /= 3;
 
         yield return new WaitForSeconds(animationLength);
 
         animator.SetBool("isAttacking", false);
         animator.SetBool("hitEnemy", false);
+        hitScript.HitSomething = false;
         hitBox.SetActive(false);
-        rb.simulated = true;
+        rb.gravityScale = 1;
         playerMovement._moveSpeed *= 3;
     }
 }
