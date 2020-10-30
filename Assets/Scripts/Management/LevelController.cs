@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] GameObject _pauseMenu = null;
     [SerializeField] GameObject _optionsMenu = null;
-    [SerializeField] AudioSource _mainSong = null;
+    [SerializeField] AudioSource _mainSong = null;    
 
-
-    bool _isPaused = false;
+    public bool _isPaused = false;
     int _currentScore = 0;
 
     void Start()
@@ -33,6 +33,11 @@ public class LevelController : MonoBehaviour
                 UnpauseGame();
             }
         }
+    }
+
+    public bool CheckPausedState()
+    {
+        return _isPaused;
     }
 
     public void PauseGame()
@@ -60,6 +65,7 @@ public class LevelController : MonoBehaviour
     {
         _currentScore += increaseAmount;
     }
+
 
     public void LoadScene(string sceneName)
     {
