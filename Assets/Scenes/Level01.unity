@@ -210,15 +210,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: NaN
+      e01: 0
+      e02: 2.6702866e+11
+      e03: NaN
+      e10: NaN
+      e11: 0
+      e12: 3.52e-43
+      e13: NaN
+      e20: 127.91785
+      e21: 2.670284e+11
+      e22: 0
+      e23: 0
+      e30: 8.34e-43
+      e31: 3.52e-43
+      e32: 0
+      e33: 0
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: -4.7562866, g: -4.7562866, b: -4.7562866, a: -4.7562866}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 6, y: 4, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1080,6 +1104,7 @@ MonoBehaviour:
   _pauseMenu: {fileID: 449657063}
   _optionsMenu: {fileID: 2053851365}
   _mainSong: {fileID: 212064922}
+  _isPaused: 0
 --- !u!114 &212064924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940a65d4fd64e1b4c8a3ab020b1a9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
+  _optionsMenu: {fileID: 0}
+  _mainSong: {fileID: 0}
+  _isPaused: 0
   _currentTime: {fileID: 883487323}
+  levelController: {fileID: 0}
   _timeLeft: 90
 --- !u!1 &224502683
 GameObject:
@@ -3754,6 +3784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a004ed03a68354b94c232da2b4a7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isOnBeat: 0
+  _beatCounter: 0
+  updateCounter: 1
   _onBeatImage: {fileID: 2096574554}
   _offBeatImage: {fileID: 204577374}
 --- !u!1 &1864742355
