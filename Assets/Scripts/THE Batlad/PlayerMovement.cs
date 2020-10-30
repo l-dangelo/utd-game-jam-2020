@@ -35,11 +35,16 @@ public class PlayerMovement : OnBeat
         animator.SetInteger("jumpNumber", 0);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
         Jump();
         GroundCheck();
+    }
+
+    private void FixedUpdate()
+    {
+        
         JumpOnBeat();
     }
 
@@ -49,6 +54,7 @@ public class PlayerMovement : OnBeat
 
         if (isGrounded)
         {
+            //Debug.Log("Is Grounded");
             animator.SetBool("isGrounded", true);
         }
         else if (!isGrounded)

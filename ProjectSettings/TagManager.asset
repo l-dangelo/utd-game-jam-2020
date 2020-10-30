@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Wall
   - Destructible Wall
+  - Punkin
+  - Ghost
+  - Spider
+  - Cat
   layers:
   - Default
   - TransparentFX

@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Ghost : OnBeat
 {
-    public float _moveSpeed = 1;
+    public AudioClip hitPSound;
+    public float _moveSpeed = 1.5f;
     public bool isFacingRight = true;
     int hitWallInt = 1; // negate when hit wall
 
-    private void FixedUpdate()
+    private void Update()
     {
-        //if (checkOnBeat())
-        //{
+        if (CheckOnBeat())
+        {
             Vector3 _moveDirection = transform.right * hitWallInt;
-            transform.position += _moveDirection * _moveSpeed * Time.fixedDeltaTime;
-        //}
+            transform.position += _moveDirection * _moveSpeed * Time.deltaTime;
+        }
         
     }
 
@@ -28,6 +29,7 @@ public class Ghost : OnBeat
         if (collision.tag.Equals("Player"))
         {
             Debug.Log("Hit Player");
+            AudioHelper.PlayClip2D(hitPSound, 1);
             //Reduce time by [TIME]
         }
     }

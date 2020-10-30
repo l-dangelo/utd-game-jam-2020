@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
         rb.gravityScale = 1;
         playerMovement._moveSpeed *= 3;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         playerHitBox.SetActive(true);
 
     }
