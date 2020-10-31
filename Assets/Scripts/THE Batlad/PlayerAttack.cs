@@ -23,6 +23,10 @@ public class PlayerAttack : MonoBehaviour
     float fireRate = 1f;
     public float nextAttack = 0.5f;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _shootSound = null;
+    [SerializeField] AudioSource _meleeSound = null;
+
 
     RaycastHit2D hitRayMelee;
     PlayerMovement playerMovement = null;
@@ -46,7 +50,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //animator.SetBool("isAttacking", true);
@@ -54,8 +57,7 @@ public class PlayerAttack : MonoBehaviour
             //melee attack
             //create a small raycast, and if it hits, deal damage
             if (Time.time > nextAttack)
-            {
-                
+            {                
                 StartCoroutine(MeleeAttack());
                 AudioHelper.PlayClip2D(attackSound.clip, 2);
 
@@ -75,6 +77,8 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator MeleeAttack()
     {
+        _meleeSound.Play();
+
         //anim.Play("Player_Attack");
         animator.SetBool("isAttacking", true);
         animator.SetTrigger("Attack");

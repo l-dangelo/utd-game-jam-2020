@@ -9,7 +9,7 @@ public class Timer : LevelController
     public LevelController levelController = null;
     public float _timeLeft = 90.0f;
 
-    bool _paused = false;
+    bool _timerPaused = false;
 
     private void Awake()
     {
@@ -27,14 +27,19 @@ public class Timer : LevelController
         _timeLeft += timeChange;
     }
 
+    public void ChangeTimerPauseState(bool pauseState)
+    {
+        _timerPaused = pauseState;
+    }
+
     void CheckIfPaused()
     {
-        _paused = levelController.CheckPausedState();
+        _timerPaused = levelController.CheckPausedState();
     }
 
     void CountDown()
     {
-        if (!_paused)
+        if (!_timerPaused)
         {
             _timeLeft -= Time.deltaTime;
             if (_timeLeft <= 0)

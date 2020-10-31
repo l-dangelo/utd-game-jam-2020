@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnBeat : MonoBehaviour
+public class OnBeat : Timer
 {
     public bool _isOnBeat = false;
     public int _beatCounter = 0;

@@ -24,6 +24,11 @@ public class PlayerMovement : OnBeat
     public float boxDiameter = 0.5f;
     public float x;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _hurtSound = null;
+    [SerializeField] AudioSource _flapSound = null;
+    [SerializeField] AudioSource _moveSound = null;
+
     bool isGrounded;
     bool touchedCieling;
     public bool isFacingRight = true;
@@ -54,7 +59,6 @@ public class PlayerMovement : OnBeat
 
     private void FixedUpdate()
     {
-        
         JumpOnBeat();
     }
 
@@ -86,6 +90,7 @@ public class PlayerMovement : OnBeat
 
     void Move()
     {
+        _moveSound.Play();
         //TODO ADD ANIMATION
         //animator.SetBoolean("Walking", true);
 
@@ -119,8 +124,6 @@ public class PlayerMovement : OnBeat
 
     void Jump()
     {
-
-
         //Debug.Log("Player is Grounded: " + isGrounded);
         animator.SetInteger("jumpNumber", jumpCounter);
 
@@ -134,9 +137,7 @@ public class PlayerMovement : OnBeat
         {
             animator.SetBool("isJumping", false);
         }
-
-
-
+               
         if (Input.GetButtonDown("Jump")){
             jumpCounter++;
             //animator.SetInteger("jumpNumber", jumpCounter);
@@ -180,6 +181,7 @@ public class PlayerMovement : OnBeat
 
     IEnumerator HitByEnemy()
     {
+        _hurtSound.Play();
         hitByEnemy = false;
         rb.velocity = new Vector2(0, 0);
         rb.gravityScale = 0.9f;

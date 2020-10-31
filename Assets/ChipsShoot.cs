@@ -9,11 +9,15 @@ public class ChipsShoot : MonoBehaviour
     [SerializeField] Transform gunPos = null;
     [SerializeField] Animator animator = null;
 
+    [SerializeField] AudioSource _shootSound = null;
+
     public bool canShoot = false;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && canShoot)
         {
+            _shootSound.Play();
+
             chipShoot.PlayOneShot(chipShoot.clip, 2);
             animator.SetTrigger("ThrowAttack");
             animator.SetBool("isThrowing", true);
