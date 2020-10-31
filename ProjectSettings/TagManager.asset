@@ -12,6 +12,9 @@ TagManager:
   - Ghost
   - Spider
   - Cat
+  - Candy
+  - Soda
+  - Chips
   layers:
   - Default
   - TransparentFX
@@ -25,7 +28,7 @@ TagManager:
   - Enemy
   - Wall
   - Player
-  - 
+  - Powerups
   - 
   - 
   - 

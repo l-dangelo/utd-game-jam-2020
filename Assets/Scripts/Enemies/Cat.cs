@@ -41,6 +41,8 @@ public class Cat : OnBeat
             Debug.Log("Hit Player");
             AudioHelper.PlayClip2D(hitPSound, 1);
             //Reduce time by [TIME]
+            PlayerMovement playerMove = collision.GetComponentInParent<PlayerMovement>();
+            playerMove.hitByEnemy = true;
         }
     }
 
