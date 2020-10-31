@@ -27,6 +27,8 @@ public class PlayerMovement : OnBeat
     bool isGrounded;
     bool touchedCieling;
     public bool isFacingRight = true;
+    public bool hitByEnemy = false;
+    public Vector3 _moveDirection;
 
     private void Awake()
     {
@@ -35,11 +37,24 @@ public class PlayerMovement : OnBeat
         animator.SetInteger("jumpNumber", 0);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
         Jump();
         GroundCheck();
+
+        //Debug.Log(rb.velocity.x + " and " + rb.velocity.y);
+        if (hitByEnemy)
+        {
+            StartCoroutine(HitByEnemy());
+            
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        
         JumpOnBeat();
     }
 
@@ -49,6 +64,7 @@ public class PlayerMovement : OnBeat
 
         if (isGrounded)
         {
+            //Debug.Log("Is Grounded");
             animator.SetBool("isGrounded", true);
         }
         else if (!isGrounded)
@@ -78,7 +94,7 @@ public class PlayerMovement : OnBeat
 
         animator.SetFloat("Speed", Mathf.Abs(x * _moveSpeed));
 
-        Vector3 _moveDirection = transform.right * x; //find the move direction based on axis buttons pressed times their respective transforms
+        _moveDirection = transform.right * x; //find the move direction based on axis buttons pressed times their respective transforms
         transform.position += _moveDirection * _moveSpeed * Time.deltaTime; //this right here multiplies the move direction by a set moveSpeed and then multiplies it by the completion time (in seconds) since the last frame, and moves the CC
 
         //flip the sprite depending on direction
@@ -160,5 +176,19 @@ public class PlayerMovement : OnBeat
         {
             OnBeatFail();
         }
+    }
+
+    IEnumerator HitByEnemy()
+    {
+        hitByEnemy = false;
+        rb.velocity = new Vector2(0, 0);
+        _moveSpeed /= 3;
+        rb.AddForce(new Vector2(_jumpForce / 3, _jumpForce / 3), ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(1.5f);
+
+        rb.gravityScale = 1;
+        _moveSpeed *= 3;
+        
     }
 }
