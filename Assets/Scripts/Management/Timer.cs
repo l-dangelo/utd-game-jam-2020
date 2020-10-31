@@ -7,14 +7,9 @@ public class Timer : LevelController
 {
     [SerializeField] TextMeshProUGUI _currentTime = null;
     public LevelController levelController = null;
-    public float _timeLeft = 90.0f;
+    public float _timeLeft = 60.0f;
 
-    bool _timerPaused = false;
-
-    private void Awake()
-    {
-        levelController = GetComponent<LevelController>();
-    }
+    bool _timerIsPaused = false;
 
     private void Update()
     {
@@ -29,17 +24,17 @@ public class Timer : LevelController
 
     public void ChangeTimerPauseState(bool pauseState)
     {
-        _timerPaused = pauseState;
+        _timerIsPaused = pauseState;
     }
 
     void CheckIfPaused()
     {
-        _timerPaused = levelController.CheckPausedState();
+        _timerIsPaused = CheckPausedState();
     }
 
     void CountDown()
     {
-        if (!_timerPaused)
+        if (!_timerIsPaused)
         {
             _timeLeft -= Time.deltaTime;
             if (_timeLeft <= 0)

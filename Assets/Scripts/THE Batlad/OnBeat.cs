@@ -32,12 +32,14 @@ public class OnBeat : Timer
     public void OnBeatSuccess()
     {
         _isOnBeat = true;
+        ChangeTimerPauseState(true);
         _beatCounter++;
     }
 
     public void OnBeatFail()
     {
         _isOnBeat = false;
+        ChangeTimerPauseState(false);
         _beatCounter = 0;
     }
 }
