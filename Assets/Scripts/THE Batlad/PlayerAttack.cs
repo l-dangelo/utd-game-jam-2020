@@ -8,8 +8,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] GameObject playerHitBox = null;
 
-    [Header("Animation Options")]
+    [Header("Animation and Audio Options")]
     [SerializeField] Animator animator = null;
+    [SerializeField] AudioSource attackSound = null;
     public float animationLength = 0.6f;
 
     [Header("Attack Options")]
@@ -56,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 
                 StartCoroutine(MeleeAttack());
+                AudioHelper.PlayClip2D(attackSound.clip, 2);
 
                 if (hitScript.HitSomething == false)
                     animator.SetBool("hitEnemy", false);
@@ -76,6 +78,7 @@ public class PlayerAttack : MonoBehaviour
         //anim.Play("Player_Attack");
         animator.SetBool("isAttacking", true);
         animator.SetTrigger("Attack");
+
         hitBox.SetActive(true);
         playerHitBox.SetActive(false); //cant get hurt while attacking. He hurts OTHERS MUAHAHAHA
         rb.gravityScale = 0;

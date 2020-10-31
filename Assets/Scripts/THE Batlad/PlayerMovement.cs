@@ -182,11 +182,20 @@ public class PlayerMovement : OnBeat
     {
         hitByEnemy = false;
         rb.velocity = new Vector2(0, 0);
+        rb.gravityScale = 0.9f;
         _moveSpeed /= 3;
-        rb.AddForce(new Vector2(_jumpForce / 3, _jumpForce / 3), ForceMode2D.Impulse);
+        if (isFacingRight)
+            rb.AddForce(new Vector2(-_jumpForce / 3, _jumpForce / 3), ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(1.5f);
+        if (!isFacingRight)
+            rb.AddForce(new Vector2(_jumpForce / 3, _jumpForce / 3), ForceMode2D.Impulse);
 
+        animator.SetTrigger("isHit");
+        animator.SetBool("isBeingHit", true);
+
+        yield return new WaitForSeconds(1f);
+
+        animator.SetBool("isBeingHit", false);
         rb.gravityScale = 1;
         _moveSpeed *= 3;
         

@@ -9,6 +9,7 @@ public class PowerupCollider : Timer
     [SerializeField] GameObject newTrail = null;
     [SerializeField] ParticleSystem gainedParticles = null;
     [SerializeField] ChipsShoot chipsShoot = null;
+    [SerializeField] AudioClip collected = null;
 
     public float _candyTime = 5;
     Gradient gradient = new Gradient();
@@ -39,6 +40,7 @@ public class PowerupCollider : Timer
                 Debug.Log("Got Candy!");
                 //give candy powerup
 
+                AudioHelper.PlayClip2D(collected, 2);
                 StartCoroutine(CandyPowerup());
 
                 collision.gameObject.SetActive(false);
@@ -51,6 +53,7 @@ public class PowerupCollider : Timer
                 //give soda powerup
 
                 StartCoroutine(SodaPowerup());
+                AudioHelper.PlayClip2D(collected, 2);
                 collision.gameObject.SetActive(false);
             }
 
@@ -60,6 +63,7 @@ public class PowerupCollider : Timer
                 //give chips powerup
 
                 StartCoroutine(ChipsPowerup());
+                AudioHelper.PlayClip2D(collected, 2);
                 collision.gameObject.SetActive(false);
             }
         }
