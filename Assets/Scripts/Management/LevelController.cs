@@ -12,7 +12,6 @@ public class LevelController : MonoBehaviour
     [SerializeField] AudioSource _mainSong = null;    
 
     public bool _isPaused = false;
-    int _currentScore = 0;
 
     void Start()
     {
@@ -55,12 +54,6 @@ public class LevelController : MonoBehaviour
         _optionsMenu.SetActive(false);
         _pauseMenu.SetActive(false);
     }
-
-    public void IncreaseScore(int increaseAmount)
-    {
-        _currentScore += increaseAmount;
-    }
-
 
     public void LoadScene(string sceneName)
     {
