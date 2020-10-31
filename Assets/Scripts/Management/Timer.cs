@@ -22,6 +22,11 @@ public class Timer : LevelController
         CheckIfPaused();
     }
 
+    public void ChangeTime(float timeChange)
+    {
+        _timeLeft += timeChange;
+    }
+
     void CheckIfPaused()
     {
         _paused = levelController.CheckPausedState();

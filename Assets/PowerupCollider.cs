@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupCollider : MonoBehaviour
+public class PowerupCollider : Timer
 {
     [SerializeField] PlayerMovement playerMovement = null;
     [SerializeField] GameObject oldTrail = null;
@@ -89,7 +89,7 @@ public class PowerupCollider : MonoBehaviour
 
     IEnumerator SodaPowerup()
     {
-        //LAUREN: [ADD TIME]
+        ChangeTime(3f);
 
         //visual feedback (maybe show on UI how much time gained?)
         gainedParticles.Play();
