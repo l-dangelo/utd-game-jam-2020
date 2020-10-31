@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
-public class Timer : LevelController
+public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _currentTime = null;
     public LevelController levelController = null;
     public float _timeLeft = 60.0f;
 
     bool _timerIsPaused = false;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -52,6 +58,6 @@ public class Timer : LevelController
 
     void GameOver()
     {
-        LoadScene("LoseScreen");
+        SceneManager.LoadScene("LoseScreen");
     }
 }
