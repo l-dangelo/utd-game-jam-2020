@@ -1117,13 +1117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940a65d4fd64e1b4c8a3ab020b1a9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenu: {fileID: 0}
-  _optionsMenu: {fileID: 0}
-  _mainSong: {fileID: 0}
+  _pauseMenu: {fileID: 449657063}
+  _optionsMenu: {fileID: 2053851365}
+  _mainSong: {fileID: 212064922}
   _isPaused: 0
   _currentTime: {fileID: 883487323}
   levelController: {fileID: 0}
-  _timeLeft: 90
+  _timeLeft: 60
 --- !u!1 &224502683
 GameObject:
   m_ObjectHideFlags: 0

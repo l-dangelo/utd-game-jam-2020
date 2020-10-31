@@ -19,6 +19,7 @@ public class Timer : LevelController
     private void Update()
     {
         CountDown();
+        CheckIfPaused();
     }
 
     void CheckIfPaused()
