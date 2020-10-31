@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour
     public float nextAttack = 0.5f;
 
     [Header("Audio")]
-    [SerializeField] AudioSource _shootSound = null;
     [SerializeField] AudioSource _meleeSound = null;
 
 
