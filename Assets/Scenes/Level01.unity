@@ -16431,8 +16431,8 @@ MonoBehaviour:
   _optionsMenu: {fileID: 2053851365}
   _mainSong: {fileID: 212064922}
   _isPaused: 0
-  _currentTime: {fileID: 0}
-  levelController: {fileID: 0}
+  _currentTime: {fileID: 883487323}
+  levelController: {fileID: 212064923}
   _timeLeft: 60
   _isOnBeat: 0
   _beatCounter: 0
@@ -17266,6 +17266,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1237679472841627142, guid: e909ce79323cee74188d78e078947efd,
+        type: 3}
+      propertyPath: chipShoot
+      value: 
+      objectReference: {fileID: 1800992841}
+    - target: {fileID: 1237679472841627142, guid: e909ce79323cee74188d78e078947efd,
+        type: 3}
+      propertyPath: _shootSound
+      value: 
+      objectReference: {fileID: 1800992841}
     m_RemovedComponents:
     - {fileID: 1237679472841627143, guid: e909ce79323cee74188d78e078947efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e909ce79323cee74188d78e078947efd, type: 3}
