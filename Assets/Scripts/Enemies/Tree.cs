@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : LevelController
+public class Tree : MonoBehaviour
 {
     int _health = 8;
 
@@ -11,15 +11,13 @@ public class Tree : LevelController
     {
         
     }
-
     void TakeDamage(int damageToTake)
     {
         _health -= damageToTake;
 
-        if(_health <= 0)
+        if (_health <= 0)
         {
             gameObject.SetActive(false);
-            LoadScene("WinScreen");
         }
     }
 }

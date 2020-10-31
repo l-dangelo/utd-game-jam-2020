@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0ca77d6bbcf093547b747a3a88752c28
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 2648b354589de9846b4990f2d2ff1af6
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/LoseScreen.unity
     guid: 9474616231b4d434d8c1b891cd00eec6
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 45c62154fc4c2d54cba043a103f2cc95
   m_configObjects: {}

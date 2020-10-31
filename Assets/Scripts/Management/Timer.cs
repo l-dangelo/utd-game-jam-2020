@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        
+        //LevelController.levelController = 
     }
 
     private void Update()
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
 
     void CheckIfPaused()
     {
-        _timerIsPaused = CheckPausedState();
+      //  _timerIsPaused = CheckPausedState();
     }
 
     void CountDown()

@@ -7,6 +7,7 @@ public class MeleeHit : MonoBehaviour
 {
     [SerializeField] PlayerAttack playerAttack = null;
     [SerializeField] Animator animator = null;
+    [SerializeField] Animator animator2 = null;
     [SerializeField] ParticleSystem damageBurst = null;
     [SerializeField] ParticleSystem enemyBurst = null;
     BoxCollider2D collBox;
@@ -29,6 +30,26 @@ public class MeleeHit : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            if (collision.CompareTag("Tree")) //is it a punkin?
+            {
+                animator2.SetTrigger("hurt");
+                Debug.Log("Hit Tree");
+
+                //add time [TIME]
+
+                collBox = collision.gameObject.GetComponent<BoxCollider2D>();
+                collBox.enabled = false;
+
+                Rigidbody2D rb2 = collision.gameObject.GetComponent<Rigidbody2D>();
+                rb2.AddForce(new Vector2(1, 4), ForceMode2D.Impulse);
+                rb2.gravityScale = 2;
+                if (rb2.velocity.y <= -2) //this needs fixing
+                {
+                    Destroy(collision.gameObject);
+                    Debug.Log("GameObject Destroyed");
+                }
+            }
+
             Debug.Log("Hit Enemy");
             enemyBurst = collision.GetComponentInChildren<ParticleSystem>();
 
@@ -120,6 +141,8 @@ public class MeleeHit : MonoBehaviour
             }
 
         }
+
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
